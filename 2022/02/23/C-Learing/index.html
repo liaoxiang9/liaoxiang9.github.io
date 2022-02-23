@@ -6,13 +6,15 @@
   
   <title>C++Learing | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="article">
+  <meta name="description" content="#C++中头文件和库文件的区别和联系###头文件中有函数的申明，库文件实现函数的定义。 比如，printf函数。使用时应包括stdio.h，打开stdio.h你只能看到，printf这 个函数的申明,却看不到printf具体是怎么实现的，而函数的实现在相应的C库 中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序 中包括了stdio.h这个头文件。链接器就能根据头件中的信息找到">
+<meta property="og:type" content="article">
 <meta property="og:title" content="C++Learing">
 <meta property="og:url" content="http://example.com/2022/02/23/C-Learing/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#C++中头文件和库文件的区别和联系###头文件中有函数的申明，库文件实现函数的定义。 比如，printf函数。使用时应包括stdio.h，打开stdio.h你只能看到，printf这 个函数的申明,却看不到printf具体是怎么实现的，而函数的实现在相应的C库 中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序 中包括了stdio.h这个头文件。链接器就能根据头件中的信息找到">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-23T01:51:35.000Z">
-<meta property="article:modified_time" content="2022-02-23T01:51:35.825Z">
+<meta property="article:modified_time" content="2022-02-23T01:55:50.645Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -93,11 +95,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>#C++中头文件和库文件的区别和联系<br>###<br>头文件中有函数的申明，库文件实现函数的定义。 比如，printf函数。使用时应包括stdio.h，打开stdio.h你只能看到，printf这 个函数的申明,却看不到printf具体是怎么实现的，而函数的实现在相应的C库 中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序 中包括了stdio.h这个头文件。链接器就能根据头件中的信息找到printf这个函 数的实现并链接进这个程序代码段里。 总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中 函数实现的代码从而把这段代码链接到用户程序中去。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/02/23/C-Learing/" data-id="ckzywj1z00000v0vbacthbd4m" data-title="C++Learing" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/02/23/C-Learing/" data-id="ckzywwy1j0000kkvbcajp97sm" data-title="C++Learing" class="article-share-link">Share</a>
       
       
       
