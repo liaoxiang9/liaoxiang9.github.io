@@ -14,7 +14,7 @@
 <meta property="og:description" content="C++中头文件和库文件的区别和联系头文件中有函数的申明，库文件实现函数的定义。 比如，printf函数。使用时应包括stdio.h，打开stdio.h你只能看到，printf这 个函数的申明,却看不到printf具体是怎么实现的，而函数的实现在相应的C库 中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序 中包括了stdio.h这个头文件。链接器就能根据头件中的信息找到prin">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-23T01:51:35.000Z">
-<meta property="article:modified_time" content="2022-02-24T02:38:07.497Z">
+<meta property="article:modified_time" content="2022-02-24T04:11:40.248Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -95,7 +95,89 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="C-中头文件和库文件的区别和联系"><a href="#C-中头文件和库文件的区别和联系" class="headerlink" title="C++中头文件和库文件的区别和联系"></a>C++中头文件和库文件的区别和联系</h1><h3 id="头文件中有函数的申明，库文件实现函数的定义。-比如，printf函数。使用时应包括stdio-h，打开stdio-h你只能看到，printf这-个函数的申明-却看不到printf具体是怎么实现的，而函数的实现在相应的C库-中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序-中包括了stdio-h这个头文件。链接器就能根据头件中的信息找到printf这个函-数的实现并链接进这个程序代码段里。-总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中-函数实现的代码从而把这段代码链接到用户程序中去。"><a href="#头文件中有函数的申明，库文件实现函数的定义。-比如，printf函数。使用时应包括stdio-h，打开stdio-h你只能看到，printf这-个函数的申明-却看不到printf具体是怎么实现的，而函数的实现在相应的C库-中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序-中包括了stdio-h这个头文件。链接器就能根据头件中的信息找到printf这个函-数的实现并链接进这个程序代码段里。-总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中-函数实现的代码从而把这段代码链接到用户程序中去。" class="headerlink" title="头文件中有函数的申明，库文件实现函数的定义。 比如，printf函数。使用时应包括stdio.h，打开stdio.h你只能看到，printf这 个函数的申明,却看不到printf具体是怎么实现的，而函数的实现在相应的C库 中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序 中包括了stdio.h这个头文件。链接器就能根据头件中的信息找到printf这个函 数的实现并链接进这个程序代码段里。 总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中 函数实现的代码从而把这段代码链接到用户程序中去。"></a>头文件中有函数的申明，库文件实现函数的定义。 比如，printf函数。使用时应包括stdio.h，打开stdio.h你只能看到，printf这 个函数的申明,却看不到printf具体是怎么实现的，而函数的实现在相应的C库 中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序 中包括了stdio.h这个头文件。链接器就能根据头件中的信息找到printf这个函 数的实现并链接进这个程序代码段里。 总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中 函数实现的代码从而把这段代码链接到用户程序中去。</h3><h1 id="使用g-来编译C-程序的过程"><a href="#使用g-来编译C-程序的过程" class="headerlink" title="使用g++来编译C++程序的过程"></a>使用g++来编译C++程序的过程</h1><h2 id="1-预处理-——-gt-i文件"><a href="#1-预处理-——-gt-i文件" class="headerlink" title="1.预处理  ——-&gt; .i文件"></a>1.预处理  ——-&gt; .i文件</h2><h3 id="E-选项表示编译器仅对输入文件进行预处理"><a href="#E-选项表示编译器仅对输入文件进行预处理" class="headerlink" title="-E 选项表示编译器仅对输入文件进行预处理"></a>-E 选项表示编译器仅对输入文件进行预处理</h3><h2 id="2-编译-——-gt-s文件"><a href="#2-编译-——-gt-s文件" class="headerlink" title="2.编译  ——-&gt; .s文件"></a>2.编译  ——-&gt; .s文件</h2><h3 id="S-选项表示告诉g-在为C-代码产生了汇编语言文件后停止编译"><a href="#S-选项表示告诉g-在为C-代码产生了汇编语言文件后停止编译" class="headerlink" title="-S 选项表示告诉g++在为C++代码产生了汇编语言文件后停止编译"></a>-S 选项表示告诉g++在为C++代码产生了汇编语言文件后停止编译</h3><h2 id="3-汇编-——-gt-o文件"><a href="#3-汇编-——-gt-o文件" class="headerlink" title="3.汇编  ——-&gt; .o文件"></a>3.汇编  ——-&gt; .o文件</h2><h3 id="C-选项告诉-g-仅把源代码编译为机器语言的目标代码"><a href="#C-选项告诉-g-仅把源代码编译为机器语言的目标代码" class="headerlink" title="-C 选项告诉 g++ 仅把源代码编译为机器语言的目标代码"></a>-C 选项告诉 g++ 仅把源代码编译为机器语言的目标代码</h3><h2 id="4-链接-——-gt-bin文件"><a href="#4-链接-——-gt-bin文件" class="headerlink" title="4.链接  ——-&gt; bin文件"></a>4.链接  ——-&gt; bin文件</h2><h3 id="o-编译选项来为将产生的可执行文件用指定的文件名"><a href="#o-编译选项来为将产生的可执行文件用指定的文件名" class="headerlink" title="-o 编译选项来为将产生的可执行文件用指定的文件名"></a>-o 编译选项来为将产生的可执行文件用指定的文件名</h3>
+        <h1 id="C-中头文件和库文件的区别和联系"><a href="#C-中头文件和库文件的区别和联系" class="headerlink" title="C++中头文件和库文件的区别和联系"></a>C++中头文件和库文件的区别和联系</h1><h3 id="头文件中有函数的申明，库文件实现函数的定义。-比如，printf函数。使用时应包括stdio-h，打开stdio-h你只能看到，printf这-个函数的申明-却看不到printf具体是怎么实现的，而函数的实现在相应的C库-中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序-中包括了stdio-h这个头文件。链接器就能根据头件中的信息找到printf这个函-数的实现并链接进这个程序代码段里。-总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中-函数实现的代码从而把这段代码链接到用户程序中去。"><a href="#头文件中有函数的申明，库文件实现函数的定义。-比如，printf函数。使用时应包括stdio-h，打开stdio-h你只能看到，printf这-个函数的申明-却看不到printf具体是怎么实现的，而函数的实现在相应的C库-中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序-中包括了stdio-h这个头文件。链接器就能根据头件中的信息找到printf这个函-数的实现并链接进这个程序代码段里。-总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中-函数实现的代码从而把这段代码链接到用户程序中去。" class="headerlink" title="头文件中有函数的申明，库文件实现函数的定义。 比如，printf函数。使用时应包括stdio.h，打开stdio.h你只能看到，printf这 个函数的申明,却看不到printf具体是怎么实现的，而函数的实现在相应的C库 中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序 中包括了stdio.h这个头文件。链接器就能根据头件中的信息找到printf这个函 数的实现并链接进这个程序代码段里。 总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中 函数实现的代码从而把这段代码链接到用户程序中去。"></a>头文件中有函数的申明，库文件实现函数的定义。 比如，printf函数。使用时应包括stdio.h，打开stdio.h你只能看到，printf这 个函数的申明,却看不到printf具体是怎么实现的，而函数的实现在相应的C库 中。而库文件一般是以二进制形式而不是C源文件形式提供给用户使用的。程序 中包括了stdio.h这个头文件。链接器就能根据头件中的信息找到printf这个函 数的实现并链接进这个程序代码段里。 总结起来就是，库文件通过头文件向外导出接口。用户通过头文件找到库文件中 函数实现的代码从而把这段代码链接到用户程序中去。</h3><h1 id="使用g-来编译C-程序的过程"><a href="#使用g-来编译C-程序的过程" class="headerlink" title="使用g++来编译C++程序的过程"></a>使用g++来编译C++程序的过程</h1><h2 id="1-预处理-——-gt-i文件"><a href="#1-预处理-——-gt-i文件" class="headerlink" title="1.预处理  ——-&gt; .i文件"></a>1.预处理  ——-&gt; .i文件</h2><h3 id="E-选项表示编译器仅对输入文件进行预处理"><a href="#E-选项表示编译器仅对输入文件进行预处理" class="headerlink" title="-E 选项表示编译器仅对输入文件进行预处理"></a>-E 选项表示编译器仅对输入文件进行预处理</h3><h2 id="2-编译-——-gt-s文件"><a href="#2-编译-——-gt-s文件" class="headerlink" title="2.编译  ——-&gt; .s文件"></a>2.编译  ——-&gt; .s文件</h2><h3 id="S-选项表示告诉g-在为C-代码产生了汇编语言文件后停止编译"><a href="#S-选项表示告诉g-在为C-代码产生了汇编语言文件后停止编译" class="headerlink" title="-S 选项表示告诉g++在为C++代码产生了汇编语言文件后停止编译"></a>-S 选项表示告诉g++在为C++代码产生了汇编语言文件后停止编译</h3><h2 id="3-汇编-——-gt-o文件"><a href="#3-汇编-——-gt-o文件" class="headerlink" title="3.汇编  ——-&gt; .o文件"></a>3.汇编  ——-&gt; .o文件</h2><h3 id="C-选项告诉-g-仅把源代码编译为机器语言的目标代码"><a href="#C-选项告诉-g-仅把源代码编译为机器语言的目标代码" class="headerlink" title="-C 选项告诉 g++ 仅把源代码编译为机器语言的目标代码"></a>-C 选项告诉 g++ 仅把源代码编译为机器语言的目标代码</h3><h2 id="4-链接-——-gt-bin文件"><a href="#4-链接-——-gt-bin文件" class="headerlink" title="4.链接  ——-&gt; bin文件"></a>4.链接  ——-&gt; bin文件</h2><h3 id="o-编译选项来为将产生的可执行文件用指定的文件名"><a href="#o-编译选项来为将产生的可执行文件用指定的文件名" class="headerlink" title="-o 编译选项来为将产生的可执行文件用指定的文件名"></a>-o 编译选项来为将产生的可执行文件用指定的文件名</h3><h1 id="g-一些重要的指令"><a href="#g-一些重要的指令" class="headerlink" title="g++一些重要的指令"></a>g++一些重要的指令</h1><h2 id="g-告诉GCC-产生能被GDB调试的的程序"><a href="#g-告诉GCC-产生能被GDB调试的的程序" class="headerlink" title="-g 告诉GCC 产生能被GDB调试的的程序"></a>-g 告诉GCC 产生能被GDB调试的的程序</h2><pre><code>g++ -g test.cpp -o test
+</code></pre>
+<h2 id="O-n-优化源代码"><a href="#O-n-优化源代码" class="headerlink" title="-O[n] 优化源代码"></a>-O[n] 优化源代码</h2><pre><code>g++ -O test.cpp -o test
+</code></pre>
+<h2 id="l-L-指定库文件-指定库文件路径"><a href="#l-L-指定库文件-指定库文件路径" class="headerlink" title="-l -L 指定库文件 | 指定库文件路径"></a>-l -L 指定库文件 | 指定库文件路径</h2><h3 id="l-参数就是用来指定程序要链接的库，-l参数紧接就是库名"><a href="#l-参数就是用来指定程序要链接的库，-l参数紧接就是库名" class="headerlink" title="-l 参数就是用来指定程序要链接的库，-l参数紧接就是库名"></a>-l 参数就是用来指定程序要链接的库，-l参数紧接就是库名</h3><h3 id="在-x2F-lib-和-x2F-usr-x2F-lib-和-x2F-usr-x2F-local-x2F-lib里的库直接用-l参数就能链接"><a href="#在-x2F-lib-和-x2F-usr-x2F-lib-和-x2F-usr-x2F-local-x2F-lib里的库直接用-l参数就能链接" class="headerlink" title="在&#x2F;lib 和 &#x2F;usr&#x2F;lib 和 &#x2F;usr&#x2F;local&#x2F;lib里的库直接用-l参数就能链接"></a>在&#x2F;lib 和 &#x2F;usr&#x2F;lib 和 &#x2F;usr&#x2F;local&#x2F;lib里的库直接用-l参数就能链接</h3><pre><code># 链接glog库
+g++ -lglog test.cpp
+
+# 如果库文件没有放在上面的三个目录里，需要使用-L参数指定库文件所在目录
+# -L 参数跟着的是库文件所在的目录名
+# 链接mytest库，libmytest.so 在/home/bing/mytestlibfold目录下
+g++ -L/home/bing/mytestlibfold -lmytest test.cpp
+</code></pre>
+<h2 id="I-指定头文件搜索目录"><a href="#I-指定头文件搜索目录" class="headerlink" title="-I 指定头文件搜索目录"></a>-I 指定头文件搜索目录</h2><pre><code># /usr/include目录一般是不用指定的，gcc知道去哪里找，但是如果头文件不在/usr/include里我们就要用-I参数指定了，比如头文件放在/myinculde里面，那编译命令行就要加上-I/myinclude参数了，如果你不加会得到&quot;xxx.h:No such file or directory&quot;的错误。 -I可以使用相对路径，比如有文件在当前目录，可以用-I.来指定。
+g++ -I/myinclude test.cpp
+</code></pre>
+<h2 id="std-x3D-c-11-设置编译标准"><a href="#std-x3D-c-11-设置编译标准" class="headerlink" title="-std&#x3D;c++11 设置编译标准"></a>-std&#x3D;c++11 设置编译标准</h2><pre><code># 使用 c++11 标准编译 test.cpp
+g++ -std=c++11 test.cpp
+</code></pre>
+<h1 id="C-中的静态库和动态库"><a href="#C-中的静态库和动态库" class="headerlink" title="C++中的静态库和动态库"></a>C++中的静态库和动态库</h1><h2 id="在Linux上创建静态库-a和动态库-so"><a href="#在Linux上创建静态库-a和动态库-so" class="headerlink" title="在Linux上创建静态库.a和动态库.so"></a>在Linux上创建静态库.a和动态库.so</h2><p>我们通常把一些公用函数制作成函数库,供其它程序使用.<br>函数库分为静态库和共享库两种:<br>1.静态函数库<br>这类库的名字一般是libxxx.a.<br>利用静态函数库编译成的文件比较大,因为整个函数库的所有数据都会被整合进目标代码中.<br>优点就显而易见了,即编译后的执行程序不需要外部的函数库支持,因为所有使用的函数都已经被编译进去了.<br>当然这也会成为缺点,如果静态函数库改变了,那么你的程序必须重新编译.<br>比如PHP的configure参数–enable-mbstring&#x3D;static(默认),<br>生成的mbstring.a被静态链接到二进制程序php,php-fpm,php-cgi,libphp.so中.<br>2.共享函数库<br>这类库的名字一般是libxxx.so.<br>相对于静态函数库,共享函数库在编译的时候 并没有被编译进目标代码中.<br>当程序执行到相关函数时才调用共享函数库里相应的函数,因此共享函数库所产生的可执行文件比较小.<br>由于共享函数库没有被整合进你的程序,而是在程序运行时动态地申请并调用,所以程序的运行环境中必须提供相应的库.<br>共享函数库的改变并不影响你的程序,所以共享函数库的升级比较方便.<br>比如PHP的configure参数–enable-mbstring&#x3D;shared,生成的mbstring.so就是共享库.<br>另外用phpize生成PECL扩展库的configure文件,然后make编译,生成的也是共享库.</p>
+<p>–enable-static 生成静态库a文件<br>–enable-shared 生成共享库so文件</p>
+<p>用ar打包.o文件(obj对象文件,目标文件)生成.a共享库:<br>ar -r libname.a name.o<br>ar -t libname.a 可见 name.o</p>
+<h1 id="g-命令行实战"><a href="#g-命令行实战" class="headerlink" title="g++命令行实战"></a>g++命令行实战</h1><pre><code># 最初目录结构
+.
+├── include
+│ └── Swap.h
+├── main.cpp
+└── src
+└── Swap.cpp
+2 directories, 3 files
+</code></pre>
+<h2 id="直接编译"><a href="#直接编译" class="headerlink" title="直接编译"></a>直接编译</h2><pre><code># 将 main.cpp src/Swap.cpp 编译为可执行文件
+g++ main.cpp src/Swap.cpp -Iinclude
+# 运行a.out
+./a.out
+
+# 将 main.cpp src/Swap.cpp 编译为可执行文件 附带一堆参数
+g++ main.cpp src/Swap.cpp -Iinclude -std=c++11 -O2 -Wall -o b.out
+# 运行 b.out
+./b.out
+</code></pre>
+<h2 id="生成库文件并编译"><a href="#生成库文件并编译" class="headerlink" title="生成库文件并编译"></a>生成库文件并编译</h2><h3 id="链接静态库生成可执行文件"><a href="#链接静态库生成可执行文件" class="headerlink" title="链接静态库生成可执行文件"></a>链接静态库生成可执行文件</h3><pre><code>## 进入src目录下
+$cd src
+# 汇编，生成Swap.o文件
+g++ Swap.cpp -c -I../include
+# 生成静态库libSwap.a
+ar rs libSwap.a Swap.o
+## 回到上级目录
+$cd ..
+# 链接，生成可执行文件:staticmain
+g++ main.cpp -Iinclude -Lsrc -lSwap -o staticmain
+</code></pre>
+<h3 id="连接动态库生成可执行文件"><a href="#连接动态库生成可执行文件" class="headerlink" title="连接动态库生成可执行文件"></a>连接动态库生成可执行文件</h3><pre><code>## 进入src目录下
+$cd src
+# 生成动态库libSwap.so
+g++ Swap.cpp -I../include -fPIC -shared -o libSwap.so
+## 上面命令等价于以下两条命令
+# gcc Swap.cpp -I../include -c -fPIC
+# gcc -shared -o libSwap.so Swap.o
+## 回到上级目录
+$cd ..
+# 链接，生成可执行文件:sharemain
+g++ main.cpp -Iinclude -Lsrc -lSwap -o sharemain
+</code></pre>
+<h1 id="最终目录结构"><a href="#最终目录结构" class="headerlink" title="最终目录结构"></a>最终目录结构</h1><pre><code>.
+├── include
+│ └── Swap.h
+├── main.cpp
+├── sharemain
+├── src
+│ ├── libSwap.a
+│ ├── libSwap.so
+│ ├── Swap.cpp
+│ └── Swap.o
+└── staticmain
+2 directories, 8 files
+</code></pre>
+<h2 id="运行可执行文件"><a href="#运行可执行文件" class="headerlink" title="运行可执行文件"></a>运行可执行文件</h2><h3 id="链接静态库"><a href="#链接静态库" class="headerlink" title="链接静态库"></a>链接静态库</h3><pre><code># 运行可执行文件
+./staticmain
+</code></pre>
+<h3 id="连接动态库（需要使用LD-LIBRARY-PATH-x3D-xxx-来指定动态库所在文件夹）"><a href="#连接动态库（需要使用LD-LIBRARY-PATH-x3D-xxx-来指定动态库所在文件夹）" class="headerlink" title="连接动态库（需要使用LD_LIBRARY_PATH&#x3D;xxx 来指定动态库所在文件夹）"></a>连接动态库（需要使用LD_LIBRARY_PATH&#x3D;xxx 来指定动态库所在文件夹）</h3><pre><code># 运行可执行文件
+LD_LIBRARY_PATH=src ./sharemain
+</code></pre>
+
       
     </div>
     <footer class="article-footer">
@@ -108,6 +190,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2022/02/24/GDB%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          GDB使用记录
+        
+      </div>
+    </a>
   
   
     <a href="/2022/02/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
@@ -148,6 +239,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/02/24/GDB%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">GDB使用记录</a>
+          </li>
         
           <li>
             <a href="/2022/02/23/C-Learing/">C++Learing</a>
