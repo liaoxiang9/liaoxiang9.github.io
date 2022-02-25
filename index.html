@@ -152,6 +152,159 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C-核心编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/">C++核心编程</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2022-02-25T11:33:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-内存分区模型"><a href="#C-内存分区模型" class="headerlink" title="C++ 内存分区模型"></a>C++ 内存分区模型</h1><h2 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h2><p>存放函数体的二进制代码，由操作系统进行管理的</p>
+<h2 id="全局区"><a href="#全局区" class="headerlink" title="全局区"></a>全局区</h2><p>存放全局变量和静态变量以及常量</p>
+<h2 id="栈区"><a href="#栈区" class="headerlink" title="栈区"></a>栈区</h2><p>由编译器自动分配释放，存放函数的参数值，局部变量等</p>
+<h2 id="堆区"><a href="#堆区" class="headerlink" title="堆区"></a>堆区</h2><p>由程序员分配和释放，若程序员不释放，程序结束后由操作系统回收</p>
+<h3 id="在C-中主要利用new在堆区开辟数据"><a href="#在C-中主要利用new在堆区开辟数据" class="headerlink" title="在C++中主要利用new在堆区开辟数据"></a>在C++中主要利用new在堆区开辟数据</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C-入门" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/02/25/C-%E5%85%A5%E9%97%A8/">C++入门</a>
+    </h1>
+  
+
+        
+        <a href="/2022/02/25/C-%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  	<time datetime="2022-02-25T06:25:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C-头文件-h文件"><a href="#C-头文件-h文件" class="headerlink" title="C++头文件(.h文件)"></a>C++头文件(.h文件)</h1><h2 id="用来声明，且仅能用来声明"><a href="#用来声明，且仅能用来声明" class="headerlink" title="用来声明，且仅能用来声明"></a>用来声明，且仅能用来声明</h2><ul>
+<li><strong>extern varialbles</strong></li>
+<li><strong>function prototypes</strong></li>
+<li><strong>class&#x2F;struct declaration</strong><h2 id="应当在定义类以及用到类的任何地方来include它"><a href="#应当在定义类以及用到类的任何地方来include它" class="headerlink" title="应当在定义类以及用到类的任何地方来include它"></a>应当在定义类以及用到类的任何地方来include它</h2><h2 id="头文件就相当于一个接口，只声明不定义-类似Java中的接口"><a href="#头文件就相当于一个接口，只声明不定义-类似Java中的接口" class="headerlink" title="头文件就相当于一个接口，只声明不定义(类似Java中的接口)"></a>头文件就相当于一个接口，只声明不定义(类似Java中的接口)</h2><h2 id="include的具体用法"><a href="#include的具体用法" class="headerlink" title="#include的具体用法"></a>#include的具体用法</h2></li>
+</ul>
+<ol>
+<li>#include “xx.h”会在.cpp文件的当前目录去寻找</li>
+<li>#include &lt;xx.h&gt;会去系统目录（编译器所认定的指定目录：&#x2F;usr&#x2F;include&#x2F;）去寻找</li>
+<li>在C++中， #include&lt;xx.h&gt; &#x3D; #include<xx></li>
+<li>对于Unix来说，文件后缀不是很重要</li>
+</ol>
+<h2 id="头文件中的标准结构"><a href="#头文件中的标准结构" class="headerlink" title="头文件中的标准结构"></a>头文件中的标准结构</h2><pre><code>#ifndef _MY_H_
+#define _MY_H_
+...中间代码
+#endif
+</code></pre>
+<h3 id="作用：用作条件编译，防止-h中的文件重复注入别的include该头文件编译文件。"><a href="#作用：用作条件编译，防止-h中的文件重复注入别的include该头文件编译文件。" class="headerlink" title="作用：用作条件编译，防止.h中的文件重复注入别的include该头文件编译文件。"></a>作用：用作条件编译，防止.h中的文件重复注入别的include该头文件编译文件。</h3><h3 id="要求：每一个-h文件只能声明一个类"><a href="#要求：每一个-h文件只能声明一个类" class="headerlink" title="要求：每一个.h文件只能声明一个类"></a>要求：每一个.h文件只能声明一个类</h3><h1 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h1><h2 id="可以忽略细节的能力"><a href="#可以忽略细节的能力" class="headerlink" title="可以忽略细节的能力"></a>可以忽略细节的能力</h2><h2 id="分层次的思考问题的能力"><a href="#分层次的思考问题的能力" class="headerlink" title="分层次的思考问题的能力"></a>分层次的思考问题的能力</h2><h1 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h1><h2 id="Filed（在类中，类似Java中的属性）"><a href="#Filed（在类中，类似Java中的属性）" class="headerlink" title="Filed（在类中，类似Java中的属性）"></a>Filed（在类中，类似Java中的属性）</h2><h2 id="parameters-（函数的参数）"><a href="#parameters-（函数的参数）" class="headerlink" title="parameters （函数的参数）"></a>parameters （函数的参数）</h2><h2 id="local-variables（在函数中）"><a href="#local-variables（在函数中）" class="headerlink" title="local variables（在函数中）"></a>local variables（在函数中）</h2><h1 id="上述三者的关系"><a href="#上述三者的关系" class="headerlink" title="上述三者的关系"></a>上述三者的关系</h1><h2 id="parameters-和-local-variables-本质上是一样的"><a href="#parameters-和-local-variables-本质上是一样的" class="headerlink" title="parameters 和 local variables 本质上是一样的"></a>parameters 和 local variables 本质上是一样的</h2><h2 id="在所有的成员变量中可以自由的使用成员变量，不需要考虑这些成员变量在哪里-此时仅仅声明了，但没有定义，但最终在调用这些方法时，总会有的"><a href="#在所有的成员变量中可以自由的使用成员变量，不需要考虑这些成员变量在哪里-此时仅仅声明了，但没有定义，但最终在调用这些方法时，总会有的" class="headerlink" title="在所有的成员变量中可以自由的使用成员变量，不需要考虑这些成员变量在哪里(此时仅仅声明了，但没有定义，但最终在调用这些方法时，总会有的)"></a>在所有的成员变量中可以自由的使用成员变量，不需要考虑这些成员变量在哪里(此时仅仅声明了，但没有定义，但最终在调用这些方法时，总会有的)</h2><h2 id="成员变量是属于对象的，但成员函数是属于类的，但成员函数会操作不同的成员变量。"><a href="#成员变量是属于对象的，但成员函数是属于类的，但成员函数会操作不同的成员变量。" class="headerlink" title="成员变量是属于对象的，但成员函数是属于类的，但成员函数会操作不同的成员变量。"></a>成员变量是属于对象的，但成员函数是属于类的，但成员函数会操作不同的成员变量。</h2><h1 id="const修饰指针（区别在于const和指针变量名离得近还是和解析符-离得近）"><a href="#const修饰指针（区别在于const和指针变量名离得近还是和解析符-离得近）" class="headerlink" title="const修饰指针（区别在于const和指针变量名离得近还是和解析符*离得近）"></a>const修饰指针（区别在于const和指针变量名离得近还是和解析符*离得近）</h1><h2 id="const修饰指针-特点，指针的指向可以改，但是指针指向的值不可以修改。"><a href="#const修饰指针-特点，指针的指向可以改，但是指针指向的值不可以修改。" class="headerlink" title="const修饰指针,特点，指针的指向可以改，但是指针指向的值不可以修改。"></a>const修饰指针,特点，指针的指向可以改，但是指针指向的值不可以修改。</h2><pre><code>int a = 10;
+const int *p = &amp;a; 
+</code></pre>
+<h2 id="const修饰常量，特点：指针的指向不可以改-但指针指向的值可以修改"><a href="#const修饰常量，特点：指针的指向不可以改-但指针指向的值可以修改" class="headerlink" title="const修饰常量，特点：指针的指向不可以改,但指针指向的值可以修改"></a>const修饰常量，特点：指针的指向不可以改,但指针指向的值可以修改</h2><pre><code>int a = 10;
+int * const p = &amp;a; 
+</code></pre>
+<h2 id="const修饰指针和常量"><a href="#const修饰指针和常量" class="headerlink" title="const修饰指针和常量"></a>const修饰指针和常量</h2><pre><code>const int * const p = &amp;a;
+</code></pre>
+<h1 id="结构体指针"><a href="#结构体指针" class="headerlink" title="结构体指针"></a>结构体指针</h1><h2 id="作用：利用指针访问结构体中的成员"><a href="#作用：利用指针访问结构体中的成员" class="headerlink" title="作用：利用指针访问结构体中的成员"></a>作用：利用指针访问结构体中的成员</h2><h2 id="形式-gt"><a href="#形式-gt" class="headerlink" title="形式   -&gt;"></a>形式   -&gt;</h2><p>&#96;&#96;&#96; C++<br>&#x2F;&#x2F; 定义一个结构体<br>struct Student{<br>    string name;<br>    int age;<br>    }<br>int main(){<br>    Student s &#x3D; {“liaoxiang”, 23};<br>    &#x2F;&#x2F; 1.用对象获取属性的方法<br>    cout&lt;&lt;s.name&lt;&lt;endl;<br>    Student *p &#x3D; &amp;s;<br>    &#x2F;&#x2F; 2. 用指针来获取对象的属性<br>    cout&lt;<p->name&lt;&lt;endl;<br>}</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/02/25/C-%E5%85%A5%E9%97%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-GDB使用记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -316,23 +469,7 @@ g++ main.cpp -Iinclude -Lsrc -lSwap -o sharemain
 <h3 id="连接动态库（需要使用LD-LIBRARY-PATH-x3D-xxx-来指定动态库所在文件夹）"><a href="#连接动态库（需要使用LD-LIBRARY-PATH-x3D-xxx-来指定动态库所在文件夹）" class="headerlink" title="连接动态库（需要使用LD_LIBRARY_PATH&#x3D;xxx 来指定动态库所在文件夹）"></a>连接动态库（需要使用LD_LIBRARY_PATH&#x3D;xxx 来指定动态库所在文件夹）</h3><pre><code># 运行可执行文件
 LD_LIBRARY_PATH=src ./sharemain
 </code></pre>
-<h1 id="C-头文件-h文件"><a href="#C-头文件-h文件" class="headerlink" title="C++头文件(.h文件)"></a>C++头文件(.h文件)</h1><h2 id="用来声明，且仅能用来声明"><a href="#用来声明，且仅能用来声明" class="headerlink" title="用来声明，且仅能用来声明"></a>用来声明，且仅能用来声明</h2><ul>
-<li><strong>extern varialbles</strong></li>
-<li><strong>function prototypes</strong></li>
-<li><strong>class&#x2F;struct declaration</strong><h2 id="应当在定义类以及用到类的任何地方来include它"><a href="#应当在定义类以及用到类的任何地方来include它" class="headerlink" title="应当在定义类以及用到类的任何地方来include它"></a>应当在定义类以及用到类的任何地方来include它</h2><h2 id="头文件就相当于一个接口，只声明不定义-类似Java中的接口"><a href="#头文件就相当于一个接口，只声明不定义-类似Java中的接口" class="headerlink" title="头文件就相当于一个接口，只声明不定义(类似Java中的接口)"></a>头文件就相当于一个接口，只声明不定义(类似Java中的接口)</h2><h2 id="include的具体用法"><a href="#include的具体用法" class="headerlink" title="#include的具体用法"></a>#include的具体用法</h2></li>
-</ul>
-<ol>
-<li>#include “xx.h”会在.cpp文件的当前目录去寻找</li>
-<li>#include &lt;xx.h&gt;会去系统目录（编译器所认定的指定目录：&#x2F;usr&#x2F;include&#x2F;）去寻找</li>
-<li>在C++中， #include&lt;xx.h&gt; &#x3D; #include<xx></li>
-<li>对于Unix来说，文件后缀不是很重要</li>
-</ol>
-<h2 id="头文件中的标准结构"><a href="#头文件中的标准结构" class="headerlink" title="头文件中的标准结构"></a>头文件中的标准结构</h2><pre><code>#ifndef _MY_H_
-#define _MY_H_
-...中间代码
-#endif
-</code></pre>
-<h3 id="作用：用作条件编译，防止-h中的文件重复注入别的include该头文件编译文件。"><a href="#作用：用作条件编译，防止-h中的文件重复注入别的include该头文件编译文件。" class="headerlink" title="作用：用作条件编译，防止.h中的文件重复注入别的include该头文件编译文件。"></a>作用：用作条件编译，防止.h中的文件重复注入别的include该头文件编译文件。</h3><h3 id="要求：每一个-h文件只能声明一个类"><a href="#要求：每一个-h文件只能声明一个类" class="headerlink" title="要求：每一个.h文件只能声明一个类"></a>要求：每一个.h文件只能声明一个类</h3>
+
       
 
       
