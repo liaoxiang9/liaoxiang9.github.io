@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>C++核心编程 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="C++ 内存分区模型代码区存放函数体的二进制代码，由操作系统进行管理的 全局区存放全局变量和静态变量以及常量 栈区由编译器自动分配释放，存放函数的参数值，局部变量等 堆区由程序员分配和释放，若程序员不释放，程序结束后由操作系统回收 在C++中主要利用new在堆区开辟数据1#include&lt;iostream&gt;">
+  <meta name="description" content="C++ 内存分区模型代码区存放函数体的二进制代码，由操作系统进行管理的 全局区存放全局变量和静态变量以及常量 栈区由编译器自动分配释放，存放函数的参数值，局部变量等 堆区由程序员分配和释放，若程序员不释放，程序结束后由操作系统回收 在C++中主要利用new在堆区开辟数据使用delete关键字来释放数组12345678910111213#include&lt;iostream&gt;  2 usin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++核心编程">
 <meta property="og:url" content="http://example.com/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="C++ 内存分区模型代码区存放函数体的二进制代码，由操作系统进行管理的 全局区存放全局变量和静态变量以及常量 栈区由编译器自动分配释放，存放函数的参数值，局部变量等 堆区由程序员分配和释放，若程序员不释放，程序结束后由操作系统回收 在C++中主要利用new在堆区开辟数据1#include&lt;iostream&gt;">
+<meta property="og:description" content="C++ 内存分区模型代码区存放函数体的二进制代码，由操作系统进行管理的 全局区存放全局变量和静态变量以及常量 栈区由编译器自动分配释放，存放函数的参数值，局部变量等 堆区由程序员分配和释放，若程序员不释放，程序结束后由操作系统回收 在C++中主要利用new在堆区开辟数据使用delete关键字来释放数组12345678910111213#include&lt;iostream&gt;  2 usin">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-25T11:33:15.000Z">
-<meta property="article:modified_time" content="2022-02-25T11:42:59.480Z">
+<meta property="article:modified_time" content="2022-02-26T02:34:01.113Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -178,7 +178,28 @@
 <h2 id="全局区"><a href="#全局区" class="headerlink" title="全局区"></a>全局区</h2><p>存放全局变量和静态变量以及常量</p>
 <h2 id="栈区"><a href="#栈区" class="headerlink" title="栈区"></a>栈区</h2><p>由编译器自动分配释放，存放函数的参数值，局部变量等</p>
 <h2 id="堆区"><a href="#堆区" class="headerlink" title="堆区"></a>堆区</h2><p>由程序员分配和释放，若程序员不释放，程序结束后由操作系统回收</p>
-<h3 id="在C-中主要利用new在堆区开辟数据"><a href="#在C-中主要利用new在堆区开辟数据" class="headerlink" title="在C++中主要利用new在堆区开辟数据"></a>在C++中主要利用new在堆区开辟数据</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="在C-中主要利用new在堆区开辟数据"><a href="#在C-中主要利用new在堆区开辟数据" class="headerlink" title="在C++中主要利用new在堆区开辟数据"></a>在C++中主要利用new在堆区开辟数据</h3><h3 id="使用delete关键字来释放数组"><a href="#使用delete关键字来释放数组" class="headerlink" title="使用delete关键字来释放数组"></a>使用delete关键字来释放数组</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line">  <span class="number">2</span> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">  <span class="number">3</span>  <span class="comment">// new 返回的是一个指针</span></span><br><span class="line">  <span class="number">4</span> <span class="function"><span class="type">int</span>* <span class="title">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="number">5</span>     <span class="type">int</span> *p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">10</span>);</span><br><span class="line">  <span class="number">6</span>     <span class="keyword">return</span> p;</span><br><span class="line">  <span class="number">7</span> &#125;</span><br><span class="line">  <span class="number">8</span> </span><br><span class="line">  <span class="number">9</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> <span class="number">10</span>     <span class="type">int</span> *p = <span class="built_in">func</span>();</span><br><span class="line"> <span class="number">11</span>     cout&lt;&lt;p&lt;&lt;endl;</span><br><span class="line"> <span class="number">12</span> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="引用做函数参数"><a href="#引用做函数参数" class="headerlink" title="引用做函数参数"></a>引用做函数参数</h2><h3 id="引用传递不同于值传递，形参会改变实参，可以简化指针修改实参。"><a href="#引用传递不同于值传递，形参会改变实参，可以简化指针修改实参。" class="headerlink" title="引用传递不同于值传递，形参会改变实参，可以简化指针修改实参。"></a>引用传递不同于值传递，形参会改变实参，可以简化指针修改实参。</h3><h3 id="如果函数的返回值是引用，这个函数调用可以作为左值"><a href="#如果函数的返回值是引用，这个函数调用可以作为左值" class="headerlink" title="如果函数的返回值是引用，这个函数调用可以作为左值"></a>如果函数的返回值是引用，这个函数调用可以作为左值</h3><h3 id="C-中的引用本质上是-一种被限制的指针常量-指针的指向不能改变，指针的值可以改变"><a href="#C-中的引用本质上是-一种被限制的指针常量-指针的指向不能改变，指针的值可以改变" class="headerlink" title="C++中的引用本质上是 一种被限制的指针常量(指针的指向不能改变，指针的值可以改变)"></a><em>C++中的引用本质上是 一种被限制的指针常量(指针的指向不能改变，指针的值可以改变)</em></h3><p>每一次访问引用时，都是在解引用。</p>
+<h2 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h2><h3 id="满足条件"><a href="#满足条件" class="headerlink" title="满足条件"></a>满足条件</h3><ul>
+<li>同一个作用域下</li>
+<li>函数名称相同</li>
+<li>函数参数类型不同或者个数不同或者顺序不同</li>
+</ul>
+<h1 id="C-中的类和对象"><a href="#C-中的类和对象" class="headerlink" title="C++ 中的类和对象"></a>C++ 中的类和对象</h1><p><strong>和Java类似，万事万物皆为对象</strong></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设计一个圆类，求其周长</span></span><br><span class="line"><span class="comment">// 圆周率</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">double</span> PI = <span class="number">3.14</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Circle&#123;</span><br><span class="line">  <span class="comment">//访问权限</span></span><br><span class="line">  <span class="comment">//公共权限</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//属性</span></span><br><span class="line">    <span class="comment">//半径</span></span><br><span class="line">    <span class="type">int</span> m_r;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">calculatorZC</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">2</span> * PI *m_r;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  Circle c;</span><br><span class="line">  c.m_r = <span class="number">10</span>;</span><br><span class="line">  cout&lt;&lt;<span class="string">&quot;圆的周长为&quot;</span>&lt;&lt;c.<span class="built_in">calculatorZC</span>()&lt;&lt;endl;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="访问权限"><a href="#访问权限" class="headerlink" title="访问权限"></a>访问权限</h2><ul>
+<li>公共权限 public 成员类内可以访问，类外也可以访问</li>
+<li>保护权限 protected 成员类内可以访问，类外不能访问，子类可以访问父类中的保护内容</li>
+<li>私有权限 private 成员 类内可以访问，类外不能访问</li>
+</ul>
+<h2 id="struct和class的区别"><a href="#struct和class的区别" class="headerlink" title="struct和class的区别"></a>struct和class的区别</h2><ul>
+<li>struct默认权限是public</li>
+<li>class默认权限是private</li>
+<li>struct是C语言的延续</li>
+</ul>
+<h2 id="成员属性设置为私有，然后再通过public的get、set函数来读写属性（和Java类似）"><a href="#成员属性设置为私有，然后再通过public的get、set函数来读写属性（和Java类似）" class="headerlink" title="成员属性设置为私有，然后再通过public的get、set函数来读写属性（和Java类似）"></a>成员属性设置为私有，然后再通过public的get、set函数来读写属性（和Java类似）</h2>
       
 
       
@@ -270,6 +291,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2022/02/28/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2022/02/25/C-%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">

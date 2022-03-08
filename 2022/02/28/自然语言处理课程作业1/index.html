@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="《自然语言处理》第一次作业报告&amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; 廖翔 3121358088问题描述 最小编辑距离 最小编辑路径  语言及平台 基于Python3.6以及N">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2022/02/28/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="《自然语言处理》第一次作业报告&amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; 廖翔 3121358088问题描述 最小编辑距离 最小编辑路径  语言及平台 基于Python3.6以及N">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/28/buBaXd.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/28/buXN8K.png">
+<meta property="article:published_time" content="2022-02-28T01:43:56.795Z">
+<meta property="article:modified_time" content="2022-03-01T11:17:14.597Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s4.ax1x.com/2022/02/28/buBaXd.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,232 +157,166 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-自然语言处理课程作业1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="《自然语言处理》第一次作业报告"><a href="#《自然语言处理》第一次作业报告" class="headerlink" title="《自然语言处理》第一次作业报告"></a>《自然语言处理》第一次作业报告</h1><h1 id="amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-廖翔-3121358088"><a href="#amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-amp-emsp-廖翔-3121358088" class="headerlink" title="&amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; 廖翔 3121358088"></a>&amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; &amp;emsp; 廖翔 3121358088</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
+<li>最小编辑距离</li>
+<li>最小编辑路径</li>
+</ul>
+<h2 id="语言及平台"><a href="#语言及平台" class="headerlink" title="语言及平台"></a>语言及平台</h2><ul>
+<li>基于Python3.6以及Numpy库实现</li>
+<li>平台为Windows10</li>
+</ul>
+<h2 id="算法实现思想"><a href="#算法实现思想" class="headerlink" title="算法实现思想"></a>算法实现思想</h2><ul>
+<li>使用动态规划思想</li>
+<li>避免大量的重复计算</li>
+</ul>
+<h2 id="程序源码"><a href="#程序源码" class="headerlink" title="程序源码"></a>程序源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;请输入字符串1&quot;</span>)</span><br><span class="line">    str1 = <span class="built_in">input</span>()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;请输入字符串2&quot;</span>)</span><br><span class="line">    str2 = <span class="built_in">input</span>()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;请输入替换的代价（其余插入和删除的代价默认为1）：&quot;</span>)</span><br><span class="line">    insert_value = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    edit_distance = np.zeros((<span class="built_in">len</span>(str1) + <span class="number">1</span>, <span class="built_in">len</span>(str2) + <span class="number">1</span>))</span><br><span class="line">    ptr = np.zeros((<span class="built_in">len</span>(str1) + <span class="number">1</span>, <span class="built_in">len</span>(str2) + <span class="number">1</span>))</span><br><span class="line">    <span class="comment"># 初始化距离矩阵</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(str1) + <span class="number">1</span>):</span><br><span class="line">        edit_distance[i, <span class="number">0</span>] = i</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(str2) + <span class="number">1</span>):</span><br><span class="line">        edit_distance[<span class="number">0</span>, j] = j</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 开始动态规划</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(str1) + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(str2) + <span class="number">1</span>):</span><br><span class="line">            insert_distance = edit_distance[i - <span class="number">1</span>, j] + <span class="number">1</span></span><br><span class="line">            delete_distance = edit_distance[i, j - <span class="number">1</span>] + <span class="number">1</span></span><br><span class="line">            flag = insert_value  <span class="comment"># 替换的代价</span></span><br><span class="line">            <span class="keyword">if</span> str2[j - <span class="number">1</span>] == str1[i - <span class="number">1</span>]:</span><br><span class="line">                flag = <span class="number">0</span></span><br><span class="line">            replace_distance = edit_distance[i - <span class="number">1</span>, j - <span class="number">1</span>] + flag</span><br><span class="line">            l = [insert_distance, delete_distance, replace_distance]</span><br><span class="line">            edit_distance[i, j] = <span class="built_in">min</span>(l)</span><br><span class="line">            ind = l.index(<span class="built_in">min</span>(l))</span><br><span class="line">            ptr[i, j] = ind  <span class="comment"># 0代表插入， 1代表删除， 2代表替代</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;最小编辑距离矩阵为：&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(edit_distance)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;最小编辑距离为&quot;</span> + <span class="built_in">str</span>(<span class="built_in">int</span>(edit_distance[<span class="built_in">len</span>(str1), <span class="built_in">len</span>(str2)])))</span><br><span class="line">    flag = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    i = <span class="built_in">len</span>(str1)</span><br><span class="line">    j = <span class="built_in">len</span>(str2)</span><br><span class="line">    <span class="comment"># print(str(i) + &quot;,&quot; + str(j))</span></span><br><span class="line">    method_list = []</span><br><span class="line">    char_list = []</span><br><span class="line">    replace_list = []  <span class="comment"># 单独创建一个装replace的数组</span></span><br><span class="line">    <span class="comment"># 开始反向输出最小路径</span></span><br><span class="line">    <span class="keyword">while</span> flag:</span><br><span class="line">        ind = ptr[i, j]</span><br><span class="line">        <span class="keyword">if</span> ind == <span class="number">0</span>:</span><br><span class="line">            i = i - <span class="number">1</span></span><br><span class="line">            msg = <span class="string">&quot;插入&quot;</span></span><br><span class="line">            method_list.append(<span class="number">1</span>)</span><br><span class="line">            char_list.append(str1[i])</span><br><span class="line">        <span class="keyword">elif</span> ind == <span class="number">1</span>:</span><br><span class="line">            j = j - <span class="number">1</span></span><br><span class="line">            msg = <span class="string">&quot;删除&quot;</span></span><br><span class="line">            method_list.append(<span class="number">2</span>)</span><br><span class="line">            char_list.append(str2[j])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            i -= <span class="number">1</span></span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> edit_distance[i][j] == edit_distance[i + <span class="number">1</span>, j + <span class="number">1</span>]:</span><br><span class="line">                msg = <span class="string">&quot;无操作&quot;</span></span><br><span class="line">                method_list.append(<span class="number">3</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                msg = <span class="string">&quot;替换&quot;</span></span><br><span class="line">                method_list.append(<span class="number">4</span>)</span><br><span class="line">                char_list.append(str2[j])</span><br><span class="line">                replace_list.append(str1[j])</span><br><span class="line">        <span class="comment"># print(str(i) + &quot;,&quot; + str(j) + msg)</span></span><br><span class="line">        <span class="keyword">if</span> i == <span class="number">0</span> &amp; j == <span class="number">0</span>:</span><br><span class="line">            flag = <span class="literal">False</span></span><br><span class="line">l = <span class="built_in">len</span>(method_list)</span><br><span class="line"></span><br><span class="line">j = <span class="built_in">len</span>(char_list)</span><br><span class="line">r = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(l):</span><br><span class="line">    <span class="keyword">if</span> method_list[l - i - <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;插入&quot;</span> + char_list[j - <span class="number">1</span>])</span><br><span class="line">        j -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> method_list[l - i - <span class="number">1</span>] == <span class="number">2</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;删除&quot;</span> + char_list[j - <span class="number">1</span>])</span><br><span class="line">        j -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> method_list[l - i - <span class="number">1</span>] == <span class="number">4</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;替换&quot;</span> + char_list[j - <span class="number">1</span>] + <span class="string">&quot;为:&quot;</span> + replace_list[-<span class="number">1</span> - r])</span><br><span class="line">        j -= <span class="number">1</span></span><br><span class="line">        r += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;相同：无操作&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><h3 id="情况1：两个字符串完全一致"><a href="#情况1：两个字符串完全一致" class="headerlink" title="情况1：两个字符串完全一致"></a>情况1：两个字符串完全一致</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/buBaXd"><img src="https://s4.ax1x.com/2022/02/28/buBaXd.png" alt="buBaXd.png"></a></p>
+<h3 id="一般情况："><a href="#一般情况：" class="headerlink" title="一般情况："></a>一般情况：</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/buXN8K"><img src="https://s4.ax1x.com/2022/02/28/buXN8K.png" alt="buXN8K.png"></a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/08/%E7%BA%A2%E5%A4%96%E7%9B%B8%E6%9C%BA%E8%BF%9E%E6%8E%A5Ubuntu16-01%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2022-03-08T08:22:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/08/%E7%BA%A2%E5%A4%96%E7%9B%B8%E6%9C%BA%E8%BF%9E%E6%8E%A5Ubuntu16-01%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%93%8D%E4%BD%9C/">红外相机连接Ubuntu16.01虚拟机操作</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/02/28/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/28/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A1/" class="archive-article-date">
-  	<time datetime="2022-02-28T01:43:56.795Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-28</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2022-02-25T11:33:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/">C++核心编程</a>
-    </h1>
+    <a href="/2022/03/08/%E7%BA%A2%E5%A4%96%E7%9B%B8%E6%9C%BA%E8%BF%9E%E6%8E%A5Ubuntu16-01%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%93%8D%E4%BD%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          红外相机连接Ubuntu16.01虚拟机操作
+        
+      </div>
+    </a>
   
+  
+    <a href="/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++核心编程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/25/C-%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2022-02-25T06:25:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/25/C-%E5%85%A5%E9%97%A8/">C++入门</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/24/GDB%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2022-02-24T04:14:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/24/GDB%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">GDB使用记录</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/23/C-Learing/" class="archive-article-date">
-  	<time datetime="2022-02-23T01:51:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/23/C-Learing/">C++Learing</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2022-02-17T04:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">我的第一篇文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/17/hello-world/" class="archive-article-date">
-  	<time datetime="2022-02-17T03:30:39.302Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -398,8 +339,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
