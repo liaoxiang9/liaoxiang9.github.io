@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022 | Hexo</title>
+  <title>C++中const和指针初始化浅析 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+  <meta name="description" content="总之记住两条： 常量的地址只能由指向常量的指针来保存 底层const能够由非常量来初始化  1234567891011121314#include &lt;iostream&gt;using namespace std;int main()&amp;#123;    const int a &#x3D; 1;    int c &#x3D; 2;    const int *b &#x3D; &amp;a; &#x2F;&#x2F; 常量的地址只能由指向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++中const和指针初始化浅析">
+<meta property="og:url" content="http://example.com/2022/04/08/C-%E4%B8%ADconst%E5%92%8C%E6%8C%87%E9%92%88%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%85%E6%9E%90/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="总之记住两条： 常量的地址只能由指向常量的指针来保存 底层const能够由非常量来初始化  1234567891011121314#include &lt;iostream&gt;using namespace std;int main()&amp;#123;    const int a &#x3D; 1;    int c &#x3D; 2;    const int *b &#x3D; &amp;a; &#x2F;&#x2F; 常量的地址只能由指向">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-08T08:16:07.000Z">
+<meta property="article:modified_time" content="2022-04-08T08:17:56.676Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,259 +154,161 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-C-中const和指针初始化浅析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      C++中const和指针初始化浅析
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/04/08/C-%E4%B8%ADconst%E5%92%8C%E6%8C%87%E9%92%88%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%85%E6%9E%90/" class="archive-article-date">
+
+        
+        <a href="/2022/04/08/C-%E4%B8%ADconst%E5%92%8C%E6%8C%87%E9%92%88%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%85%E6%9E%90/" class="archive-article-date">
   	<time datetime="2022-04-08T08:16:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/04/08/C-%E4%B8%ADconst%E5%92%8C%E6%8C%87%E9%92%88%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%85%E6%9E%90/">C++中const和指针初始化浅析</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="总之记住两条："><a href="#总之记住两条：" class="headerlink" title="总之记住两条："></a>总之记住两条：</h2><ul>
+<li>常量的地址只能由指向常量的指针来保存</li>
+<li>底层const能够由非常量来初始化</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> c = <span class="number">2</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> *b = &amp;a; <span class="comment">// 常量的地址只能由指向常量的指针来保存</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> *d = &amp;c; <span class="comment">// 反过来，指向常量的指针也能由非常量的地址来保存(底层const能够由非常量来初始化)</span></span><br><span class="line">    <span class="comment">// int * const e = &amp;a; // 报错： 因为常量的地址只能由指向常量的指针来保存</span></span><br><span class="line">    <span class="type">int</span> * <span class="type">const</span> e = &amp;c;  <span class="comment">// 所以常量指针(本身不指向常量)只能由非常量的地址进行初始化了(排除法)</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> * <span class="type">const</span> f = &amp;a; <span class="comment">// 指向常量的常量指针可以由常量的地址初始化（对应第6行）也可以由非常量的地址初始化（对应第7行）</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> * <span class="type">const</span> g = &amp;c; </span><br><span class="line">    cout &lt;&lt; *b &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; *d &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/04/08/C-%E4%B8%ADconst%E5%92%8C%E6%8C%87%E9%92%88%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%85%E6%9E%90/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/08/%E7%BA%A2%E5%A4%96%E7%9B%B8%E6%9C%BA%E8%BF%9E%E6%8E%A5Ubuntu16-01%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2022-03-08T08:22:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/08/%E7%BA%A2%E5%A4%96%E7%9B%B8%E6%9C%BA%E8%BF%9E%E6%8E%A5Ubuntu16-01%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%93%8D%E4%BD%9C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">红外相机连接Ubuntu16.01虚拟机操作</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/08/%E7%BA%A2%E5%A4%96%E7%9B%B8%E6%9C%BA%E8%BF%9E%E6%8E%A5Ubuntu16-01%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%93%8D%E4%BD%9C/">红外相机连接Ubuntu16.01虚拟机操作</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/28/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A1/" class="archive-article-date">
-  	<time datetime="2022-02-28T01:43:56.795Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-28</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2022-02-25T11:33:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/25/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/">C++核心编程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/25/C-%E5%85%A5%E9%97%A8/" class="archive-article-date">
-  	<time datetime="2022-02-25T06:25:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/25/C-%E5%85%A5%E9%97%A8/">C++入门</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/24/GDB%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2022-02-24T04:14:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/24/GDB%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/">GDB使用记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/23/C-Learing/" class="archive-article-date">
-  	<time datetime="2022-02-23T01:51:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/23/C-Learing/">C++Learing</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2022-02-17T04:40:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/17/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">我的第一篇文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/02/17/hello-world/" class="archive-article-date">
-  	<time datetime="2022-02-17T03:30:39.302Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/02/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -425,8 +331,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
