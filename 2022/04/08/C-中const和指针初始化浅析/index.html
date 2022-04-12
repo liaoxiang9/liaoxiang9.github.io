@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>C++中const和指针初始化浅析 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总之记住两条： 常量的地址只能由指向常量的指针来保存 底层const能够由非常量来初始化  1234567891011121314#include &lt;iostream&gt;using namespace std;int main()&amp;#123;    const int a &#x3D; 1;    int c &#x3D; 2;    const int *b &#x3D; &amp;a; &#x2F;&#x2F; 常量的地址只能由指向">
+  <meta name="description" content="总之记住两条： 常量的地址只能由指向常量的指针来保存 底层const能够由非常量来初始化  关于const 和 引用 不能把const对象、字面值或者需要类型转换的对象传递给普通的引用（和指针是一样的！）  1234567891011121314#include &lt;iostream&gt;using namespace std;int main()&amp;#123;    const int a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++中const和指针初始化浅析">
 <meta property="og:url" content="http://example.com/2022/04/08/C-%E4%B8%ADconst%E5%92%8C%E6%8C%87%E9%92%88%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%85%E6%9E%90/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="总之记住两条： 常量的地址只能由指向常量的指针来保存 底层const能够由非常量来初始化  1234567891011121314#include &lt;iostream&gt;using namespace std;int main()&amp;#123;    const int a &#x3D; 1;    int c &#x3D; 2;    const int *b &#x3D; &amp;a; &#x2F;&#x2F; 常量的地址只能由指向">
+<meta property="og:description" content="总之记住两条： 常量的地址只能由指向常量的指针来保存 底层const能够由非常量来初始化  关于const 和 引用 不能把const对象、字面值或者需要类型转换的对象传递给普通的引用（和指针是一样的！）  1234567891011121314#include &lt;iostream&gt;using namespace std;int main()&amp;#123;    const int a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-08T08:16:07.000Z">
-<meta property="article:modified_time" content="2022-04-08T08:17:56.676Z">
+<meta property="article:modified_time" content="2022-04-08T10:18:08.057Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -177,6 +177,9 @@
         <h2 id="总之记住两条："><a href="#总之记住两条：" class="headerlink" title="总之记住两条："></a>总之记住两条：</h2><ul>
 <li>常量的地址只能由指向常量的指针来保存</li>
 <li>底层const能够由非常量来初始化</li>
+</ul>
+<h2 id="关于const-和-引用"><a href="#关于const-和-引用" class="headerlink" title="关于const 和 引用"></a>关于const 和 引用</h2><ul>
+<li>不能把const对象、字面值或者需要类型转换的对象传递给普通的引用（和指针是一样的！）</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> c = <span class="number">2</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> *b = &amp;a; <span class="comment">// 常量的地址只能由指向常量的指针来保存</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> *d = &amp;c; <span class="comment">// 反过来，指向常量的指针也能由非常量的地址来保存(底层const能够由非常量来初始化)</span></span><br><span class="line">    <span class="comment">// int * const e = &amp;a; // 报错： 因为常量的地址只能由指向常量的指针来保存</span></span><br><span class="line">    <span class="type">int</span> * <span class="type">const</span> e = &amp;c;  <span class="comment">// 所以常量指针(本身不指向常量)只能由非常量的地址进行初始化了(排除法)</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> * <span class="type">const</span> f = &amp;a; <span class="comment">// 指向常量的常量指针可以由常量的地址初始化（对应第6行）也可以由非常量的地址初始化（对应第7行）</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> * <span class="type">const</span> g = &amp;c; </span><br><span class="line">    cout &lt;&lt; *b &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; *d &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
