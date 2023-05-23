@@ -395,6 +395,15 @@
 </li>
 </ul>
 <h2 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h2><h3 id="Linux文件IO"><a href="#Linux文件IO" class="headerlink" title="Linux文件IO"></a>Linux文件IO</h3><h3 id="标准C文件IO"><a href="#标准C文件IO" class="headerlink" title="标准C文件IO"></a>标准C文件IO</h3><p><img src="/images/4f8b08980bace90584ce6fd755d7b1816469b5272c1d1ca19f51ed234082218d.png" alt="picture 1">  </p>
+<p>fopen函数：打开文件，返回文件指针，失败返回NULL</p>
+<p>文件指针：FILE *fp</p>
+<ul>
+<li>文件描述符：索引文件表，文件表中有文件状态，文件偏移量，v节点等信息</li>
+<li>文件读写指针：指向文件中的某个位置，文件读写指针和文件描述符是一一对应的关系</li>
+<li>I&#x2F;O缓冲区：内存中的一块区域，用于临时存放数据，提高I&#x2F;O效率</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FILE *fp = <span class="built_in">fopen</span>(<span class="string">&quot;test.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="虚拟地址空间"><a href="#虚拟地址空间" class="headerlink" title="虚拟地址空间"></a>虚拟地址空间</h3><p><img src="https://cdn.jsdelivr.net/gh/liaoxiang9/Picture@main/blogs/pictures20230523161629.png" alt="20230523161629"></p>
 
       
 
