@@ -16,7 +16,7 @@
 <meta property="og:description" content="C++ WebServer实战Makefile 什么是Makefile——自动化编译  一个工程中的源文件不计其数，如果要一个一个地去编译，那将是一件十分费时费力的工作。make命令可以自动化完成这种工作。Makefile文件就是告诉make命令如何去编译和链接程序。也可以执行操作系统的命令。   Makefile的规则  文件命名：Makefile或makefile Makefile规则 tar">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-05-23T01:50:59.000Z">
-<meta property="article:modified_time" content="2023-05-23T02:14:04.738Z">
+<meta property="article:modified_time" content="2023-05-23T03:04:22.268Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -203,7 +203,8 @@
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Makefile</span></span><br><span class="line"><span class="section">main: main.o</span></span><br><span class="line">    g++ -o main main.o</span><br><span class="line"><span class="section">main.o: main.cpp</span></span><br><span class="line">    g++ -c main.cpp</span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">    rm main main.o</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>makefile中的变量<ul>
+<li><p>makefile中的变量</p>
+<ul>
 <li>变量的命名：变量的命名字母一般使用大写，这只是一种习惯，如果你愿意，也可以使用小写或是其他的字符，如下所示：<ul>
 <li>objects &#x3D; main.o hello.o factorial.o</li>
 <li>cc &#x3D; g++</li>
@@ -278,11 +279,105 @@
 </li>
 </ul>
 </li>
-<li>Makefile 的更新规则<ul>
+<li><p>Makefile 的更新规则</p>
+<ul>
 <li>Makefile的更新规则：Makefile的更新规则是指，当我们修改了一个源文件，我们不必要把所有的文件都重新编译一遍，而是，只需要编译被修改的源文件和依赖于该文件的目标文件就可以了。这个功能是由make程序提供的。</li>
 <li>具体检查的规则为：</li>
 <li>如果目标文件不存在，那么目标文件就会被重新生成。</li>
 <li>如果目标文件存在，那么make会比较目标文件和相关的依赖文件的修改日期，如果依赖文件的日期要比目标文件的日期要新，或者目标文件不存在，那么目标文件就会被重新生成。</li>
+</ul>
+</li>
+<li><p>Makefile 函数</p>
+<ul>
+<li>Makefile函数：Makefile中也提供了一些函数，这些函数可以用于处理一些字符串，或是执行一些命令。下面，我将介绍一些常用的函数。</li>
+<li>$(wildcard <pattern>)：通配符函数，寻找满足通配符模式<pattern>的文件，并将文件列表以空格分隔返回。</li>
+<li>$(subst <from>,<to>,<text>)：将字串<text>中的<from>字符串替换成<to>。</li>
+<li>$(patsubst <pattern>,<replacement>,<text>)：查找<text>中的单词（单词以“空格”、“Tab”或“回车”“换行”分隔）是否符合模式<pattern>，如果匹配的话，则以<replacement>替换。</li>
+<li>$(strip <string>)：去掉<string>字串中开头和结尾的空字符。</li>
+<li>$(findstring <find>,<in>)：在字串<in>中查找<find>字串。</li>
+<li>$(filter &lt;pattern…&gt;,<text>)：以<pattern>模式过滤<text>字串中的单词。</li>
+<li>$(sort <list>)：给<list>字串中的单词排序（升序）。</li>
+<li>$(dir &lt;names…&gt;)：从文件名序列<names>中取出目录部分。</li>
+<li>$(notdir &lt;names…&gt;)：从文件名序列<names>中取出非目录部分。</li>
+<li>$(suffix &lt;names…&gt;)：从文件名序列<names>中取出后缀。</li>
+<li>$(basename &lt;names…&gt;)：从文件名序列<names>中取出前缀。</li>
+<li>$(addsuffix <suffix>,&lt;names…&gt;)：把<suffix>加到<names>中每个单词后面。</li>
+<li>$(addprefix <prefix>,&lt;names…&gt;)：把<prefix>加到<names>中每个单词前面。</li>
+<li>$(join <list1>,<list2>)：把<list2>中的单词逐一加到<list1>的单词后面。</li>
+<li>$(word &lt; n&gt;,&lt; text&gt;)：取出&lt; text&gt;中第&lt; n&gt;个单词。（第一个单词为1）</li>
+<li>$(words &lt; text&gt;)：统计<text>中字的个数。</li>
+<li>$(wordlist &lt; s&gt;,&lt; e&gt;,&lt; text&gt;)：取出&lt; text&gt;中从&lt; s&gt;到&lt; e&gt;的单词。</li>
+</ul>
+</li>
+<li><p>make clean</p>
+<ul>
+<li>make clean的作用：make clean的作用是删除所有被make命令生成的文件。这些文件包括：可执行文件、目标文件、.o文件、.a文件等。</li>
+<li>make clean的写法：make clean的写法有很多种(需要显示写在makefile中，通过 make clean进行调用)，下面，我将介绍一些常用的写法。</li>
+<li>clean:<ul>
+<li>rm -rf *.o hello</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h2><ul>
+<li><p>什么是GDB</p>
+<ul>
+<li>GDB是GNU开源组织发布的一个强大的UNIX下的程序调试工具。它能够运行于多种平台之上，其功能包括：设置断点、逐过程执行、观察变量值、改变变量值、调用被调试程序的函数等等。GDB使用起来并不直观，但是它却是一个非常强大的调试工具，只要我们能够熟练的使用它，就能够事半功倍。</li>
+<li>主要有四个方面的功能<ul>
+<li>启动程序，可以按照自己的要求随心所欲的运行程序。</li>
+<li>可让被调试的程序在你所指定的调置下运行。</li>
+<li>当程序因为某些信号而停止时，可以检查程序此时的状态。</li>
+<li>动态的改变程序的执行环境。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>准备工作</p>
+<ul>
+<li>在使用GDB之前，我们需要在编译时加上-g选项，如下所示：<ul>
+<li>gcc -g main.c -o main</li>
+</ul>
+</li>
+<li>通常会关掉优化选项，以便于调试，如下所示：<ul>
+<li>gcc -g -O0 main.c -o main</li>
+</ul>
+</li>
+<li>在尽量把不影响程序行为的情况下，打开所有的警告选项，如下所示：<ul>
+<li>gcc -g -O0 -Wall main.c -o main</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>GDB的使用</p>
+<ul>
+<li>启动GDB：在命令行中输入gdb，即可启动GDB。</li>
+<li>启动被调试的程序：在GDB的命令行中输入run，即可启动被调试的程序。</li>
+<li>查看代码：在GDB的命令行中输入list，即可查看代码。<ul>
+<li>list 行号：查看指定行号的代码。</li>
+<li>list 函数名：查看指定函数的代码。</li>
+<li>list：查看接下来的代码。</li>
+<li>list xxx.cpp:xxx：查看指定文件的代码。</li>
+</ul>
+</li>
+<li>设置断点：在GDB的命令行中输入break 行号，即可设置断点。<ul>
+<li>break 函数名：在指定函数的入口处设置断点。</li>
+<li>break + 行号：在指定行号处设置断点。</li>
+<li>break + xxx.cpp:xxx：在指定文件的指定行号处设置断点。</li>
+<li>break + 行号 if 条件：在指定行号处设置条件断点。</li>
+</ul>
+</li>
+<li>查看断点：在GDB的命令行中输入info break，即可查看断点。</li>
+<li>删除断点：在GDB的命令行中输入delete 断点编号，即可删除断点。</li>
+<li>单步执行：在GDB的命令行中输入step，即可单步执行程序。</li>
+<li>单步跳过：在GDB的命令行中输入next，即可单步跳过程序。</li>
+<li>查看变量：在GDB的命令行中输入print 变量名，即可查看变量。</li>
+<li>查看变量类型：在GDB的命令行中输入ptype 变量名，即可查看变量类型。</li>
+<li>修改变量：在GDB的命令行中输入set var 变量名&#x3D;值，即可修改变量。</li>
+<li>查看函数栈：在GDB的命令行中输入bt，即可查看函数栈。</li>
+<li>跳转到指定行：在GDB的命令行中输入jump 行号，即可跳转到指定行。</li>
+<li>退出GDB：在GDB的命令行中输入quit，即可退出GDB。</li>
+<li>退出被调试的程序：在GDB的命令行中输入kill，即可退出被调试的程序。</li>
 </ul>
 </li>
 </ul>
