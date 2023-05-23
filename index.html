@@ -172,7 +172,119 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="C-WebServer实战"><a href="#C-WebServer实战" class="headerlink" title="C++ WebServer实战"></a>C++ WebServer实战</h1><h2 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h2><ul>
+<li><p>什么是Makefile——自动化编译</p>
+<ul>
+<li>一个工程中的源文件不计其数，如果要一个一个地去编译，那将是一件十分费时费力的工作。make命令可以自动化完成这种工作。Makefile文件就是告诉make命令如何去编译和链接程序。也可以执行操作系统的命令。</li>
+</ul>
+</li>
+<li><p>Makefile的规则</p>
+<ul>
+<li>文件命名：Makefile或makefile</li>
+<li>Makefile规则<ul>
+<li>target … : prerequisites …<br>command<br>…<br>…<br>…</li>
+<li>target也就是一个目标文件，可以是Object File，也可以是执行文件。还可以是一个标签（Label），对于标签这种特性，在后续的“伪目标”章节中会有叙述。</li>
+<li>prerequisites就是，要生成那个target所需要的文件或是目标。</li>
+<li>command也就是make需要执行的命令。（任意的Shell命令）</li>
+<li>在一个规则中的命令，必须要以[Tab]键开始。</li>
+<li>在prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行。</li>
+<li>也就是说，我们在使用make时，如果把某几个文件做为target，那么make会自动找寻文件所在目录下的Makefile文件，并执行其所定义的规则。</li>
+<li>Makefile默认只执行第一条命令，若其他命令与第一条命令无关，则不会执行。</li>
+<li>在命令行中，我们可以定义一些变量，然后在Makefile文件中使用这些变量。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>举例</p>
+</li>
+</ul>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Makefile</span></span><br><span class="line"><span class="section">main: main.o</span></span><br><span class="line">    g++ -o main main.o</span><br><span class="line"><span class="section">main.o: main.cpp</span></span><br><span class="line">    g++ -c main.cpp</span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">    rm main main.o</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>makefile中的变量<ul>
+<li>变量的命名：变量的命名字母一般使用大写，这只是一种习惯，如果你愿意，也可以使用小写或是其他的字符，如下所示：<ul>
+<li>objects &#x3D; main.o hello.o factorial.o</li>
+<li>cc &#x3D; g++</li>
+<li>cflags &#x3D; -Wall -O</li>
+</ul>
+</li>
+<li>变量的使用：在Makefile中，我们使用变量，其目的是为了方便我们的维护，如果我们需要修改编译器，只需要修改相应的变量即可。<ul>
+<li>objects &#x3D; main.o hello.o factorial.o</li>
+<li>cc &#x3D; g++</li>
+<li>cflags &#x3D; -Wall -O</li>
+<li>hello: $(objects)<ul>
+<li>$(cc) $(cflags) -o hello $(objects)</li>
+<li>main.o: main.cpp hello.h</li>
+<li>$(cc) $(cflags) -c main.cpp</li>
+<li>hello.o: hello.cpp hello.h</li>
+<li>$(cc) $(cflags) -c hello.cpp</li>
+<li>factorial.o: factorial.cpp hello.h</li>
+<li>$(cc) $(cflags) -c factorial.cpp</li>
+<li>clean:</li>
+<li>rm hello $(objects)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>变量的替换：在Makefile中，我们使用变量，其目的是为了方便我们的维护，如果我们需要修改编译器，只需要修改相应的变量即可。<ul>
+<li>objects &#x3D; main.o hello.o factorial.o</li>
+<li>cc &#x3D; g++</li>
+<li>cflags &#x3D; -Wall -O</li>
+<li>hello: $(objects)<ul>
+<li>$(cc) $(cflags) -o hello $(objects)</li>
+<li>main.o: main.cpp hello.h</li>
+<li>$(cc) $(cflags) -c main.cpp</li>
+<li>hello.o: hello.cpp hello.h</li>
+<li>$(cc) $(cflags) -c hello.cpp</li>
+<li>factorial.o: factorial.cpp hello.h</li>
+<li>$(cc) $(cflags) -c factorial.cpp</li>
+<li>clean:</li>
+<li>rm hello $(objects)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自动化变量：自动化变量是一个特殊的变量，这种变量只有在规则执行时才会被扩展。自动化变量一般都是以“$”开始的，如$@，$&lt;。下面，我将介绍一些常用的自动化变量。<ul>
+<li>$@: 表示规则中的目标文件（Target）</li>
+<li>$&lt;: 表示规则中的第一个依赖文件（Prerequisites）</li>
+<li>$^: 表示规则中的所有的依赖文件（Prerequisites），以空格分隔</li>
+<li>$?：表示规则中所有比目标新的依赖文件列表</li>
+<li>$*: 表示规则中的“%”部分，即，目标模式中“%”匹配的部分。</li>
+<li>举例：<ul>
+<li>objects &#x3D; main.o hello.o factorial.o</li>
+<li>cc &#x3D; g++</li>
+<li>cflags &#x3D; -Wall -O</li>
+<li>hello: $(objects)<ul>
+<li>$(cc) $(cflags) -o $@ $^</li>
+<li>main.o: main.cpp hello.h</li>
+<li>$(cc) $(cflags) -c $&lt;</li>
+<li>hello.o: hello.cpp hello.h</li>
+<li>$(cc) $(cflags) -c $&lt;</li>
+<li>factorial.o: factorial.cpp hello.h</li>
+<li>$(cc) $(cflags) -c $&lt;</li>
+<li>clean:</li>
+<li>rm hello $(objects)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>通配符：在Makefile中，有三个通配符，如下所示：</li>
+<li>“*”：匹配任意多个字符</li>
+<li>“?”：匹配单个字符</li>
+<li>“[…]”：匹配括号中的任意一个字符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Makefile 的更新规则<ul>
+<li>Makefile的更新规则：Makefile的更新规则是指，当我们修改了一个源文件，我们不必要把所有的文件都重新编译一遍，而是，只需要编译被修改的源文件和依赖于该文件的目标文件就可以了。这个功能是由make程序提供的。</li>
+<li>具体检查的规则为：</li>
+<li>如果目标文件不存在，那么目标文件就会被重新生成。</li>
+<li>如果目标文件存在，那么make会比较目标文件和相关的依赖文件的修改日期，如果依赖文件的日期要比目标文件的日期要新，或者目标文件不存在，那么目标文件就会被重新生成。</li>
+</ul>
+</li>
+</ul>
+
       
 
       
