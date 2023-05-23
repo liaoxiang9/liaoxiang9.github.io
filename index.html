@@ -361,7 +361,7 @@
 <li>设置断点：在GDB的命令行中输入break 行号，即可设置断点。<ul>
 <li>break 函数名：在指定函数的入口处设置断点。</li>
 <li>break + 行号：在指定行号处设置断点。</li>
-<li>break + xxx.cpp:xxx：在指定文件的指定行号处设置断点。</li>
+<li>break + xx在x.cpp:xxx：指定文件的指定行号处设置断点。</li>
 <li>break + 行号 if 条件：在指定行号处设置条件断点。</li>
 </ul>
 </li>
@@ -376,9 +376,25 @@
 <li>跳转到指定行：在GDB的命令行中输入jump 行号，即可跳转到指定行。</li>
 <li>退出GDB：在GDB的命令行中输入quit，即可退出GDB。</li>
 <li>退出被调试的程序：在GDB的命令行中输入kill，即可退出被调试的程序。</li>
+<li>自动变量：在GDB的命令行中输入display 变量名，即可设置自动变量。</li>
+<li>查看自动变量：在GDB的命令行中输入info display，即可查看自动变量。</li>
+<li>删除自动变量：在GDB的命令行中输入undisplay 变量编号，即可删除自动变量。</li>
+<li>start：在GDB的命令行中输入start，即可启动被调试的程序，并停在main函数的第一行。</li>
+<li>continue：在GDB的命令行中输入continue，即可继续执行被调试的程序。</li>
+<li>finish：在GDB的命令行中输入finish，即可执行完当前函数，并停在函数的返回处。</li>
+<li>watch：在GDB的命令行中输入watch 变量名，即可设置观察点。</li>
+<li>info watchpoints：在GDB的命令行中输入info watchpoints，即可查看观察点。</li>
+<li>x：在GDB的命令行中输入x&#x2F;nfu addr，即可查看内存中的内容。<ul>
+<li>n：显示多少个单位。</li>
+<li>f：显示格式。</li>
+<li>u：单位。</li>
+<li>addr：地址。</li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+<h2 id="文件IO"><a href="#文件IO" class="headerlink" title="文件IO"></a>文件IO</h2><h3 id="Linux文件IO"><a href="#Linux文件IO" class="headerlink" title="Linux文件IO"></a>Linux文件IO</h3><h3 id="标准C文件IO"><a href="#标准C文件IO" class="headerlink" title="标准C文件IO"></a>标准C文件IO</h3><p><img src="/images/4f8b08980bace90584ce6fd755d7b1816469b5272c1d1ca19f51ed234082218d.png" alt="picture 1">  </p>
 
       
 
